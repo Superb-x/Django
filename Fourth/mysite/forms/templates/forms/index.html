@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <script src="{% static 'forms/js/jquery.min.js' %}"></script>
+</head>
+<body>
+<h1>这是表单填写的首页</h1>
+
+<form action="/index/vote/" method="post">
+    {% csrf_token %}
+    {{form}}
+    <div>你的名字是 <input type="text" name="name" placeholder="请输入你的名字" /></div>
+    <div>你的性别是 <input type="radio" name="sex" value="男" checked/>男<input type="radio" name="sex" value="女"/>女</div>
+    <div>你的学校是 <input type="text" name="school" placeholder="请输入你的学校" /></div>
+    <div>你的公司是 <input type="text" name="company" placeholder="请输入你的公司" /></div>
+    <div>你的电话号码是 <input type="text" name="tel" placeholder="请输入你的电话号码" /></div>
+    <div><input type="submit" /></div>
+</form>
+{% csrf_token %}
+<button id="search">查询</button>
+</body>
+
+<script>
+        // using jQuery
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+    $('#search').click(function () {
+        $.ajax({
+            url: '/index/list/',
+            type: 'POST',
+            data: {'shop': '湖南'},
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    })
+</script>
+</html>

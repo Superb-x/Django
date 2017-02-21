@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>经销商查询</title>
+</head>
+<body>
+<form action="/index/list/" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="text" name="shop" placeholder="请输入您想查询的经销商">
+    <input type="submit">
+</form>
+</body>
+</html>

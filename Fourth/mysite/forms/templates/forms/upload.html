@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    {% load static %}
+</head>
+<body>
+<form action="/index/uploaded/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="img" required />
+    <input type="submit" value="提交">
+</form>
+<h1>{{image}}</h1>
+<img src="/static/forms/images/{{image}}" alt="">
+</body>
+</html>
