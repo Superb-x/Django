@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jack's Blog</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+</head>
+<body>
+<h1>欢迎来到刘祥麟的个人站点</h1>
+{% if latest_question_list %}
+    <ul class="question_list">
+        {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{question.question_text}}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+<p class="origin">以上内容来自Python内置SQLite数据库</p>
+</body>
+</html>

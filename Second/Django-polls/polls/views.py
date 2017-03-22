@@ -18,7 +18,7 @@ class IndexView(generic.ListView):
         """
         return Question.objects.filter(
             pub_date__lte=timezone.now()
-        ).order_by('-pub_date')[:6]
+        ).order_by('-pub_date')[:5]
 
 class DetailView(generic.DetailView):
     model = Question
@@ -31,14 +31,13 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
-def vote(request, question_id):
+def vote(requrst, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
-        print(request.POST['choice'])
+        selected_choice = question.choice_set.get(pk=requrst.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # 重新显示表单页面
-        return render(request, 'polls/detail.html', {
+        return render(requrst, 'polls/detail.html', {
             'question': question,
             'error_message': '你没有做出你的选择',
         })
