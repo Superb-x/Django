@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    width: 100%;
+    min-width: 1000px;
+    background: url("../images/wrap.jpg")no-repeat 50% 0;
+}
+.container {
+    width: 1080px;
+    margin: 0 auto;
+}
+.header {
+    width: 100%;
+    height: 410px;
+    background: url("../images/hd3.jpg")no-repeat 50% 0;
+}
+.header p {
+    box-sizing: border-box;
+    padding-top: 380px;
+    padding-left: 100px;
+}
+.header p a {
+    text-decoration: none;
+}
+form {
+    background: url("../images/ct2.jpg")no-repeat;
+}
+.question {
+    padding: 0 100px;
+    margin-bottom: 50px;
+    font-size: 24px;
+}
+label {
+    font-size: 18px;
+}

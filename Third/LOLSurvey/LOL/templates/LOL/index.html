@@ -7,6 +7,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'LOL/css/index.css' %}">
 </head>
 <body>
-
+    <div class="info_content">
+        <h1>欢迎来到英雄联盟</h1>
+        <!--使用 Django 的url标签要注意命名空间还有":"后面要接的是name=""的内容-->
+        <a href="{% url 'lol:detail' %}">点击此处进入问卷页面</a>
+    </div>
 </body>
 </html>

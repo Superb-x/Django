@@ -2,9 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>问卷调查</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'LOL/css/detail.css' %}">
 </head>
 <body>
-$END$
+{% if question_list %}
+    {% for question in question_list %}
+        <p>{{question.question_text}}</p>
+    {% endfor %}
+{% else %}
+    <p>没找到可用数据</p>
+{% endif %}
+<div class="wrapper">
+    <div class="container">
+        <div class="header">
+            <p>欢迎您，亲爱的 <span>172564615</span><a href="">&nbsp;&nbsp;注销</a></p>
+        </div>
+        <form action="{% url 'lol:result' %}" method="post">
+            <div class="question">
+                <p>1、【单选题】请问最近一个月，您是否玩过英雄联盟这款网游呢？</p>
+                <div>
+                    <label for="">
+                        <input type="radio"  value="1">玩过
+                    </label>
+                </div>
+                <div>
+                    <label for="">
+                        <input type="radio" value="1">玩过
+                    </label>
+                </div>
+            </div>
+            <div class="question">
+                <p>1、【单选题】请问最近一个月，您是否玩过英雄联盟这款网游呢？</p>
+                <div>
+                    <label for="">
+                        <input type="radio"  value="1">玩过
+                    </label>
+                </div>
+                <div>
+                    <label for="">
+                        <input type="radio" value="1">玩过
+                    </label>
+                </div>
+            </div>
+            <div class="question">
+                <p>1、【单选题】请问最近一个月，您是否玩过英雄联盟这款网游呢？</p>
+                <div>
+                    <label for="">
+                        <input type="radio"  value="1">玩过
+                    </label>
+                </div>
+                <div>
+                    <label for="">
+                        <input type="radio" value="1">玩过
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>
